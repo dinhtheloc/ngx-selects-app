@@ -1,5 +1,53 @@
-.locdt .selects {
-  display: inline-block;
+.locdt label {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.locdt .form-control {
+  display: block;
   position: relative;
-  white-space: nowrap;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #f8fafc;
+  background-color: #cbd5e1;
+  background-clip: padding-box;
+  border: 1px solid #cbd5e1;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0.25rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.locdt .form-control svg{
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translate(-50%, -50%);
+  width: 24px;
+}
+
+.locdt .form-control .text-empty {
+  color: #6b7280;
+}
+
+.locdt .form-control .chip-tag {
+  color: #f1f5f9;
+  background: #84cc16;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-right: 6px;
+}
+
+.locdt .form-control .chip-tag:last-child {
+  margin-right: 0px;
+}
+
+.locdt .form-control .chip-tag.three-dot {
+  background: transparent;
+  color: #6b7280;
 }

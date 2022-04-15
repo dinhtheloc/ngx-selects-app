@@ -1,6 +1,34 @@
-<button (click)="init()">click</button>
+<!-- <button (click)="init()">click</button> -->
 
-<div></div>
+<div class="locdt" style="width: 500px;">
+  <!-- label -->
+  <label>Multi-select</label>
+  <!-- selects -->
+  <div class="selects">
+    <div class="form-control">
+      <span class="text-empty">Choose a tag.</span>
+    </div>
+  </div>
+</div>
+
+<div class="locdt" style="width: 500px; margin-top: 24px;">
+  <label>Multi-select</label>
+
+  <div class="form-control">
+    <span class="chip-tag">Family</span>
+    <span class="chip-tag">Family in law</span>
+    <span class="chip-tag">Co-workers</span>
+    <span class="chip-tag three-dot">...</span>
+    <span class="chip-tag">3</span>
+
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#334155"
+      stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
+  </div>
+
+</div>
+
 
 <ng-template #tpl>
   <div class="modal-card">
