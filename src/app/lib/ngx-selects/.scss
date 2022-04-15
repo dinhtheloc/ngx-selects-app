@@ -1,0 +1,111 @@
+.locdt {
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  .form-control {
+    display: block;
+    position: relative;
+    max-width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #f8fafc;
+    background-color: #cbd5e1;
+    background-clip: padding-box;
+    border: 1px solid #cbd5e1;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    svg {
+      position: absolute;
+      top: 50%;
+      right: 0px;
+      transform: translate(-50%, -50%);
+      width: 24px;
+      transition-property: transform;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 150ms;
+    }
+    svg.up {
+      transform: translate(-50%, -50%) rotate(180deg);
+      transform-origin: center center;
+    }
+    .text-empty {
+      color: #6b7280;
+    }
+    .chip-tag {
+      color: #f1f5f9;
+      background: #84cc16;
+      padding: 4px 8px;
+      border-radius: 8px;
+      font-size: 14px;
+      margin-right: 6px;
+      &:last-child {
+        margin-right: 0px;
+      }
+    }
+    .chip-tag.three-dot {
+      background: transparent;
+      color: #6b7280;
+    }
+  }
+  .options {
+    border: none;
+    margin: 0;
+    background: #cbd5e1;
+    padding: 12px;
+    .search {
+      width: 100%;
+      position: relative;
+      display: flex;
+      input {
+        height: 28px;
+        border-radius: 12px;
+        border: none;
+        padding: 4px 42px 4px 12px;
+        flex: 1;
+        outline: none;
+      }
+      svg {
+        position: absolute;
+        top: 50%;
+        right: 0px;
+        transform: translate(-50%, -50%);
+        width: 24px;
+      }
+    }
+
+    .items {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 12px;
+      .item {
+        display: flex;
+        align-items: center;
+        .box {
+          width: 22px;
+          height: 22px;
+          background: transparent;
+          display: inline-block;
+          border-radius: 8px;
+          border: 2px solid #334155;
+          margin-right: 8px;
+          &.active {
+            border: 2px solid #84cc16;
+            background: #84cc16;
+          }
+        }
+        .label {
+          color: #0f172a;
+          flex: 1;
+        }
+      }
+    }
+  }
+}
