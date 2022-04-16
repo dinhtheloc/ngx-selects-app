@@ -1,3 +1,5 @@
+@import "@angular/cdk/overlay-prebuilt.css";
+
 .locdt {
   label {
     display: block;
@@ -21,6 +23,12 @@
     appearance: none;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    &.is-open {
+      border-top-left-radius: 0.25rem;
+      border-top-right-radius: 0.25rem;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
     svg {
       position: absolute;
       top: 50%;
@@ -59,6 +67,10 @@
     margin: 0;
     background: #cbd5e1;
     padding: 12px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
     .search {
       width: 100%;
       position: relative;
@@ -83,11 +95,12 @@
     .items {
       margin-top: 12px;
       display: grid;
-      grid-template-columns: auto auto;
+      grid-template-columns: 50% auto;
       gap: 12px;
       .item {
         display: flex;
         align-items: center;
+        width: 100%;
         .box {
           width: 22px;
           height: 22px;
@@ -104,6 +117,21 @@
         .label {
           color: #0f172a;
           flex: 1;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        &:hover{
+          .box {
+            border: 2px solid #84cc16;
+            background: #84cc16;
+            cursor: pointer;
+          }
+          .label {
+            font-weight: bold;
+            cursor: pointer;
+          }
         }
       }
     }
