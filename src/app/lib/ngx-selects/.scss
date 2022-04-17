@@ -38,7 +38,7 @@
       width: 24px;
       transition-property: transform;
       transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-      transition-duration: 150ms;
+      transition-duration: 300ms;
     }
     svg.up {
       transform: translate(-50%, -50%) rotate(180deg);
@@ -60,6 +60,10 @@
         border-radius: 8px;
         font-size: 14px;
         margin: 6px;
+        max-width: 150px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .chip-tag.three-dot {
         background: transparent;
@@ -72,6 +76,7 @@
     margin: 0;
     background: #cbd5e1;
     padding: 12px;
+    padding-top: 0px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     border-bottom-left-radius: 0.25rem;
@@ -117,7 +122,10 @@
           transition-property: color, background-color, border-color,
             text-decoration-color, fill, stroke;
           transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-          transition-duration: 150ms;
+          transition-duration: 300ms;
+          &.select-all {
+            border: 2px solid #4d7c0f;
+          }
           &.active {
             border: 2px solid #84cc16;
             background: #84cc16;
@@ -129,7 +137,11 @@
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          transition: font-weight 150ms ease-in-out;
+          transition: font-weight 300ms ease-in-out;
+
+          &.select-all {
+            color: #4d7c0f;
+          }
         }
 
         &:hover {

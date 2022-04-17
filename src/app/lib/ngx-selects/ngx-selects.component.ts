@@ -1,6 +1,6 @@
-import { CdkConnectedOverlay, Overlay } from '@angular/cdk/overlay';
+import { CdkConnectedOverlay } from '@angular/cdk/overlay';
 import { ViewportRuler } from '@angular/cdk/scrolling';
-import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild, ViewContainerRef, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { OptionData } from './ngx-selects.interface';
@@ -13,22 +13,22 @@ import { OptionData } from './ngx-selects.interface';
   ],
   encapsulation: ViewEncapsulation.None,
 })
-export class NgxSelectsComponent implements OnInit {
-
+export class NgxSelectsComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() data: Array<OptionData>;
-  dataSelected: Array<OptionData> = [];
+  @Input() numberLimit: number = 2;
 
+  @ViewChild('trigger') trigger!: ElementRef;
+  @ViewChild(CdkConnectedOverlay, { static: true }) private connectedOverlay!: CdkConnectedOverlay;
+
+  dataSelected: Array<OptionData> = [];
   panelOpen = false;
   _triggerRect!: DOMRect;
-
+  observer!: ResizeObserver;
+  
   protected readonly _destroy = new Subject<void>();
-  @ViewChild('trigger') trigger!: ElementRef;
-  @ViewChild(CdkConnectedOverlay, { static: true })
-  private connectedOverlay!: CdkConnectedOverlay;
+
   constructor(
-    public overlay: Overlay,
-    public viewContainerRef: ViewContainerRef,
-    protected _viewportRuler: ViewportRuler, protected _changeDetectorRef: ChangeDetectorRef) {
+    protected _viewportRuler: ViewportRuler) {
     this.data = [
       {
         id: 1,
@@ -69,14 +69,23 @@ export class NgxSelectsComponent implements OnInit {
       .subscribe(() => {
         if (this.panelOpen) {
           this.updateRect();
-          this._changeDetectorRef.markForCheck();
         }
       });
   }
 
+  ngAfterViewInit() {
+    this.observer = new ResizeObserver(() => {
+      if (this.connectedOverlay.overlayRef) this.connectedOverlay.overlayRef.updatePosition();
+    });
+    this.observer.observe(this.trigger.nativeElement);
+  }
+
+  ngOnDestroy() {
+    this.observer.unobserve(this.trigger.nativeElement);
+  }
+
 
   open() {
-    // ----
     this.updateRect();
     this.panelOpen = !this.panelOpen;
   }
@@ -94,24 +103,24 @@ export class NgxSelectsComponent implements OnInit {
     return result ? true : false;
   }
 
-
-  private updateRect() {
-    this._triggerRect = this.trigger.nativeElement.getBoundingClientRect();
-  }
-
   handleClick(item: OptionData) {
     if (this.isChecked(item)) {
       this.removeItem(item);
     } else {
       this.dataSelected.push(item);
     }
-    setTimeout(() => {
-      this.connectedOverlay.overlayRef.updatePosition();
-    });
   }
 
   removeItem(item: OptionData) {
     this.dataSelected.splice(this.dataSelected.findIndex(obj => obj.id === item.id), 1);
+  }
+
+  selectAll() {
+    this.dataSelected.length === this.data.length ? this.dataSelected = [] : this.dataSelected = [...this.data];
+  }
+
+  private updateRect() {
+    this._triggerRect = this.trigger.nativeElement.getBoundingClientRect();
   }
 
 }

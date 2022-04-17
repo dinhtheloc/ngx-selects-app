@@ -5,7 +5,11 @@ margin-left: 25vw;">
     <div class="form-control" [ngClass]="{ 'is-open': panelOpen}">
       <span *ngIf="dataSelected.length === 0" class="text-empty">Choose a tag.</span>
       <div class="chip-list-wrapper">
-        <span *ngFor="let item of dataSelected" class="chip-tag">{{item.text}}</span>
+        <span *ngFor="let item of dataSelected | slice:0:numberLimit" class="chip-tag">{{item.text}}</span>
+        <ng-template [ngIf]="dataSelected.length - numberLimit > 0">
+          <span class="chip-tag three-dot">...</span>
+          <span class="chip-tag">{{dataSelected.length - numberLimit}}</span>
+        </ng-template>
       </div>
       <svg [ngClass]="{ up: panelOpen}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
         stroke="#334155" stroke-width="2">
@@ -29,8 +33,14 @@ margin-left: 25vw;">
         </svg>
       </div>
       <div class="items">
+        <div class="item" (click)="selectAll()">
+          <span class="box select-all" [ngClass]="{ active: this.dataSelected.length === this.data.length}"></span>
+          <span class="label select-all">{{this.dataSelected.length === this.data.length ? 'UnSelect all' : 'Select all'}}</span>
+        </div>
+      </div>
+      <div class="items">
         <div *ngFor="let item of data" class="item" (click)="handleClick(item)">
-          <span class="box active" [ngClass]="{ 'active': isChecked(item)}"></span>
+          <span class="box" [ngClass]="{ 'active': isChecked(item)}"></span>
           <span class="label">{{item.text}}</span>
         </div>
       </div>
