@@ -3,7 +3,10 @@ margin-left: 25vw;">
   <label>Multi-select</label>
   <div class="selects" (click)="open()" cdkOverlayOrigin #origin="cdkOverlayOrigin" #trigger>
     <div class="form-control" [ngClass]="{ 'is-open': panelOpen}">
-      <span class="text-empty">Choose a tag.</span>
+      <span *ngIf="dataSelected.length === 0" class="text-empty">Choose a tag.</span>
+      <div class="chip-list-wrapper">
+        <span *ngFor="let item of dataSelected" class="chip-tag">{{item.text}}</span>
+      </div>
       <svg [ngClass]="{ up: panelOpen}" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
         stroke="#334155" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
@@ -11,6 +14,29 @@ margin-left: 25vw;">
     </div>
   </div>
 </div>
+
+<ng-template cdkConnectedOverlay cdkConnectedOverlayHasBackdrop cdkConnectedOverlayLockPosition
+  cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+  [cdkConnectedOverlayMinWidth]="_triggerRect?.width!" [cdkConnectedOverlayOrigin]="origin"
+  [cdkConnectedOverlayOpen]="panelOpen" (backdropClick)="close()">
+  <div class="locdt" [ngStyle]="{'width': _triggerRect?.width! + 'px'}">
+    <div class="options">
+      <div class="search">
+        <input placeholder="Search" />
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="#334155"
+          stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </div>
+      <div class="items">
+        <div *ngFor="let item of data" class="item" (click)="handleClick(item)">
+          <span class="box active" [ngClass]="{ 'active': isChecked(item)}"></span>
+          <span class="label">{{item.text}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
 
 <!-- <div class="locdt" style="width: 500px; margin-top: 24px;">
   <label>Multi-select</label>
@@ -88,27 +114,3 @@ margin-left: 25vw;">
     </div>
   </div>
 </div> -->
-
-
-<ng-template cdkConnectedOverlay cdkConnectedOverlayHasBackdrop cdkConnectedOverlayLockPosition
-  cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
-  [cdkConnectedOverlayMinWidth]="_triggerRect?.width!" [cdkConnectedOverlayOrigin]="origin"
-  [cdkConnectedOverlayOpen]="panelOpen" (backdropClick)="close()">
-  <div class="locdt" [ngStyle]="{'width': _triggerRect?.width! + 'px'}">
-    <div class="options">
-      <div class="search">
-        <input placeholder="Search" />
-        <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="#334155"
-          stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-        </svg>
-      </div>
-      <div class="items">
-        <div *ngFor="let item of data" class="item">
-          <span class="box active" [ngClass]="{ 'active': isChecked(item)}"></span>
-          <span class="label">{{item.text}}</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</ng-template>

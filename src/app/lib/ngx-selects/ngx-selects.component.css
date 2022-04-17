@@ -7,6 +7,7 @@
 .locdt .form-control {
   display: block;
   position: relative;
+  cursor: pointer;
   max-width: 100%;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
@@ -45,18 +46,21 @@
 .locdt .form-control .text-empty {
   color: #6b7280;
 }
-.locdt .form-control .chip-tag {
+.locdt .form-control .chip-list-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.locdt .form-control .chip-list-wrapper .chip-tag {
   color: #f1f5f9;
   background: #84cc16;
   padding: 4px 8px;
   border-radius: 8px;
   font-size: 14px;
-  margin-right: 6px;
+  margin: 6px;
 }
-.locdt .form-control .chip-tag:last-child {
-  margin-right: 0px;
-}
-.locdt .form-control .chip-tag.three-dot {
+.locdt .form-control .chip-list-wrapper .chip-tag.three-dot {
   background: transparent;
   color: #6b7280;
 }
@@ -109,6 +113,9 @@
   border-radius: 8px;
   border: 2px solid #334155;
   margin-right: 8px;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
 }
 .locdt .options .items .item .box.active {
   border: 2px solid #84cc16;
@@ -120,10 +127,9 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition: font-weight 150ms ease-in-out;
 }
 .locdt .options .items .item:hover .box {
-  border: 2px solid #84cc16;
-  background: #84cc16;
   cursor: pointer;
 }
 .locdt .options .items .item:hover .label {
