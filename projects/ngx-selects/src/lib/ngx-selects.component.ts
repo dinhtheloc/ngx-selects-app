@@ -9,7 +9,6 @@ import { OptionData } from './ngx-selects.interface';
   selector: 'ngx-selects',
   template: `
     <div class="locdt">
-      <label>Multi-select</label>
       <div class="selects" (click)="open()" cdkOverlayOrigin #origin="cdkOverlayOrigin" #trigger>
         <div class="form-control" [ngClass]="{ 'is-open': panelOpen}">
           <span *ngIf="dataSelected.length === 0" class="text-empty">Choose a tag.</span>
