@@ -1,27 +1,108 @@
-# NgxSelectsApp
+# Angular multiselect 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.1.
+Angular multiselect component for web application. Easy to integrate and use. 
 
-## Development server
+# Getting started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Installation
+```
+npm install ngx-selects
+```
 
-## Code scaffolding
+And then include it in your module:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```ts
+import { NgMultiSelectDropDownModule } from 'ngx-selects';
+// ...
 
-## Build
+@NgModule({
+  imports: [
+    NgxSelectsModule
+    // ...
+  ]
+  // ...
+})
+export class AppModule {}
+```
+## Usage
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+.html
+<ngx-selects [data]="data" [(store)]="dataSelected"></ngx-selects>
+```
 
-## Running unit tests
+```
+import { Component } from '@angular/core';
+import {OptionData} from './lib/ngx-selects/ngx-selects.interface';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'ngx-selects-app';
+  // demo
+  data: OptionData[] = [
+    {
+      id: 1,
+      text: 'Family'
+    },
+    {
+      id: 2,
+      text: 'Family in Law'
+    },
+    {
+      id: 3,
+      text: 'Co-workers'
+    },
+    {
+      id: 4,
+      text: 'Hockey club'
+    },
+    {
+      id: 5,
+      text: 'Startup Investing. Simplified.'
+    },
+    {
+      id: 6,
+      text: 'Swiss Embassy'
+    },
+    {
+      id: 7,
+      text: 'Zurich Hike & Outdoor. 16,170 InternationalOutdoorEnthusiasts.'
+    },
+    {
+      id: 8,
+      text: 'Family'
+    },
+    {
+      id: 9,
+      text: 'Family in Law'
+    },
+    {
+      id: 10,
+      text: 'Co-workers'
+    },
+    {
+      id: 11,
+      text: 'Hockey club'
+    },
+    {
+      id: 12,
+      text: 'Startup Investing. Simplified.'
+    },
+    {
+      id: 13,
+      text: 'Swiss Embassy'
+    },
+    {
+      id: 14,
+      text: 'Zurich Hike & Outdoor. 16,170 InternationalOutdoorEnthusiasts.'
+    }
+  ]
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+  dataSelected: OptionData[]  = [];
+}
 
-## Running end-to-end tests
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
