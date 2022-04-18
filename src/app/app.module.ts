@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LibModule } from './lib/lib.module';
+import { NgxSelectsModule } from 'ngx-selects';
+
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import { LibModule } from './lib/lib.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LibModule
+    NgxSelectsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -105,7 +105,7 @@
     .items {
       margin-top: 12px;
       display: grid;
-      grid-template-columns: 50% auto;
+      grid-template-columns: 50% 50%;
       gap: 12px;
       .item {
         display: flex;
@@ -153,6 +153,11 @@
             cursor: pointer;
           }
         }
+      }
+
+      &.scroll {
+        max-height: 120px;
+        overflow-y: auto;
       }
     }
   }

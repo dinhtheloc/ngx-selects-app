@@ -103,6 +103,68 @@
           }
         }
       }
+    },
+    "ngx-selects": {
+      "projectType": "library",
+      "root": "projects/ngx-selects",
+      "sourceRoot": "projects/ngx-selects/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-selects/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-selects/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-selects/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-selects/src/test.ts",
+            "tsConfig": "projects/ngx-selects/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-selects/karma.conf.js"
+          }
+        }
+      }
+    },
+    "demoi": {
+      "projectType": "library",
+      "root": "projects/demoi",
+      "sourceRoot": "projects/demoi/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/demoi/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/demoi/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/demoi/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/demoi/src/test.ts",
+            "tsConfig": "projects/demoi/tsconfig.spec.json",
+            "karmaConfig": "projects/demoi/karma.conf.js"
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngx-selects-app"

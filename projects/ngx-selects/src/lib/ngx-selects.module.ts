@@ -1,17 +1,26 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common';
-import { NgxSelectsComponent } from './ngx-selects/ngx-selects.component';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { FilterPipe } from './ngx-selects/filter.pipe';
+
+import { NgxSelectsComponent } from './ngx-selects.component';
+import { FilterPipe } from './filter.pipe';
+
+
+
 
 @NgModule({
-  declarations: [NgxSelectsComponent, FilterPipe],
+  declarations: [
+    NgxSelectsComponent,
+    FilterPipe
+  ],
   imports: [
     CommonModule,
     OverlayModule,
     FormsModule
   ],
-  exports: [NgxSelectsComponent],
+  exports: [
+    NgxSelectsComponent
+  ]
 })
-export class LibModule { }
+export class NgxSelectsModule { }
