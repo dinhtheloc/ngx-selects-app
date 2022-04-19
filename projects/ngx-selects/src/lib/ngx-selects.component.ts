@@ -59,12 +59,16 @@ import { OptionData } from './ngx-selects.interface';
   `,
   styleUrls: [
     './normalize.css',
+    './overlay-prebuilt.css',
     './ngx-selects.component.css'
   ],
+  encapsulation: ViewEncapsulation.None,
 })
 export class NgxSelectsComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() data: Array<OptionData> = [];
   @Input() numberLimit: number = 2;
+  @Input() Multiselect: boolean = false;
+  
   @Input()
   get store() {
     return this.dataSelected;

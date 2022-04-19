@@ -39,31 +39,31 @@ export class AppComponent {
     },
     {
       id: 8,
-      text: 'Family'
+      text: 'Family 2'
     },
     {
       id: 9,
-      text: 'Family in Law'
+      text: 'Family in Law 2'
     },
     {
       id: 10,
-      text: 'Co-workers'
+      text: 'Co-workers 2'
     },
     {
       id: 11,
-      text: 'Hockey club'
+      text: 'Hockey club 2'
     },
     {
       id: 12,
-      text: 'Startup Investing. Simplified.'
+      text: 'Startup Investing. Simplified 2.'
     },
     {
       id: 13,
-      text: 'Swiss Embassy'
+      text: 'Swiss Embassy 2'
     },
     {
       id: 14,
-      text: 'Zurich Hike & Outdoor. 16,170 InternationalOutdoorEnthusiasts.'
+      text: 'Zurich Hike & Outdoor. 16,170 InternationalOutdoorEnthusiasts 2.'
     }
   ]
 
