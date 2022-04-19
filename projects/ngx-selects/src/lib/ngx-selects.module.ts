@@ -3,8 +3,8 @@ import { FormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common';
 import { OverlayModule } from '@angular/cdk/overlay';
 
-import { NgxSelectsComponent } from './ngx-selects.component';
-import { FilterPipe } from './filter.pipe';
+import { NgxSelectsComponent } from './component/ngx-selects/ngx-selects.component';
+import { FilterPipe } from './pipe/filter.pipe';
 
 
 

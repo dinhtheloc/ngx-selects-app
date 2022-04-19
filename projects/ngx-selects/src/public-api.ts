@@ -3,6 +3,6 @@
  */
 
 export * from './lib/ngx-selects.service';
-export * from './lib/ngx-selects.component';
+export * from './lib/component/ngx-selects/ngx-selects.component';
 export * from './lib/ngx-selects.module';
-export * from './lib/ngx-selects.interface';
+export * from './lib/component/ngx-selects/ngx-selects.interface';

@@ -63,6 +63,9 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+.locdt .form-control .chip-list-wrapper .chip-tag.single-chip-tag {
+  max-width: 80%;
+}
 .locdt .form-control .chip-list-wrapper .chip-tag.three-dot {
   background: transparent;
   color: #6b7280;
