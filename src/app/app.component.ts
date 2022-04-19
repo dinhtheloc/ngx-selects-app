@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {OptionData} from './lib/ngx-selects/ngx-selects.interface';
+import { OptionData } from 'ngx-selects';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -67,7 +67,7 @@ export class AppComponent {
     }
   ]
 
-  dataSelected: OptionData[]  = [];
+  dataSelected: OptionData[] = [];
   // [
   //   {
   //     id: 1,

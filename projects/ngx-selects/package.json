@@ -1,6 +1,14 @@
 {
   "name": "ngx-selects",
-  "version": "0.0.2",
+  "version": "0.0.4",
+  "bugs": {
+    "url": "https://github.com/dinhtheloc/ngx-selects-app/issues",
+    "email": "locdtptit@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dinhtheloc/ngx-selects-app"
+  },
   "peerDependencies": {
     "@angular/common": "^13.3.0",
     "@angular/core": "^13.3.0",
