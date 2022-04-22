@@ -3,13 +3,21 @@
     <div class="form-control" [ngClass]="{ 'is-open': panelOpen}">
       <span *ngIf="dataSelected.length === 0" class="text-empty">{{placeholder}}</span>
       <div class="chip-list-wrapper">
-        <span *ngFor="let item of dataSelected | slice:0:numberLimit" class="chip-tag"
-          [ngClass]="{'single-chip-tag': !multiselect}">{{item.text}}</span>
-        <ng-template [ngIf]="dataSelected.length - numberLimit > 0">
-          <span class="chip-tag three-dot">...</span>
-          <span class="chip-tag">{{dataSelected.length - numberLimit}}</span>
+        <ng-template *ngIf="numberLimit > 0; else else_content;">
+          <span *ngFor="let item of dataSelected | slice:0:numberLimit" class="chip-tag"
+            [ngClass]="{'single-chip-tag': !multiselect}">{{item.text}}</span>
+          <ng-template [ngIf]="dataSelected.length - numberLimit > 0">
+            <span class="chip-tag three-dot">...</span>
+            <span class="chip-tag">{{dataSelected.length - numberLimit}}</span>
+          </ng-template>
         </ng-template>
+        <ng-template #else_content>
+          <span *ngFor="let item of dataSelected" class="chip-tag"
+            [ngClass]="{'single-chip-tag': !multiselect}">{{item.text}}</span>
+        </ng-template>
+
       </div>
+
       <svg [ngClass]="{ up: panelOpen }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
         stroke="#334155" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
@@ -33,9 +41,18 @@
       </div>
       <div *ngIf="multiselect" class="items">
         <div class="item" (click)="selectAll()">
+
           <span class="box select-all" [ngClass]="{ active: this.dataSelected.length === this.data.length}"></span>
           <span
-            class="label select-all">{{this.dataSelected.length === this.data.length ? 'UnSelect all' : 'Select all'}}</span>
+            class="label select-all-text">{{this.dataSelected.length === this.data.length ? 'UnSelect all' : 'Select all'}}</span>
+        </div>
+
+        <div *ngIf="dataSelected.length > 0" class="item" (click)="dataSelected = []">
+          <svg class="remove-all" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#f1f5f9"
+            stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+          <span class="label remove-all-text">Remove all</span>
         </div>
       </div>
       <div class="items scroll">

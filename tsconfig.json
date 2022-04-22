@@ -11,16 +11,6 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
-    "paths": {
-      "demoi": [
-        "dist/demoi/demoi",
-        "dist/demoi"
-      ],
-      "ngx-selects": [
-        "dist/ngx-selects/ngx-selects",
-        "dist/ngx-selects"
-      ]
-    },
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
